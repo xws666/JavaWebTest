@@ -113,13 +113,13 @@
     const questions = [
       {
         type: '单选题',
-        text: 'AOP 中，切点使用的接口是',
+        text: 'AOP中，切点使用的接口是',
         options: ['BeforeAdvice', 'Pointcut', 'AfterAdvice', 'MethodInterceotor'],
         answer: 'B'
       },
       {
         type: '单选题',
-        text: '在 SpringMVc 中，以下描述错误的是',
+        text: '在SpringMVc中，以下描述错误的是',
         options: [
           'SpringMVc 中必须是实现了 Handler 接口的 JavaBean 才能成为请求处理器',
           'DisPatcherServlet 是 SpringMvc 的前端 Servlet,和任何的 servlet 一样，必须在 web. xml 中配置后，才能起作用',
@@ -130,19 +130,19 @@
       },
       {
         type: '单选题',
-        text: 'MyBatis 的插件是通过拦截器实现。可以拦截类中的时机有四个，包括执行 SQL 的全过程、重写执行 SQL 的过程、执行 SQL 的参数组装、执行结果的组装。下列哪个不是配置拦截时机的参数',
+        text: 'MyBatis的插件是通过拦截器实现。可以拦截类中的时机有四个，包括执行SQL的全过程、重写执行SQL的过程、执行SQL的参数组装、执行结果的组装。下列哪个不是配置拦截时机的参数',
         options: ['Executor', 'ParameterHandler', 'TypeHandler', 'StatementHandler'],
         answer: 'C'
       },
       {
         type: '单选题',
-        text: 'InternalResourceViewResolve 父类是',
+        text: 'InternalResourceViewResolve父类是',
         options: ['UrlBasedViewResolver', 'ActionSupport', 'ActionBasedViewResolver', 'BasedViewResolverServlet'],
         answer: 'A'
       },
       {
         type: '单选题',
-        text: '与 WHERE g BETWEEN 60 AND 80 语句等价的子句是?',
+        text: '与WHERE g BETWEEN 60 AND 80语句等价的子句是?',
         options: [
           'WHERE g > 60 and g < 80',
           'WHERE g >= 60 and g < 80',
@@ -153,18 +153,18 @@
       },
       {
         type: '单选题',
-        text: '关于 WHERE 与 HAVING 说法不正确的是?',
+        text: '关于WHERE与HAVING说法不正确的是?',
         options: [
-          'WHERE 条件与 HAVING 条件作用对象一致',
-          'HAVING 作用于结果组',
-          'WHERE 条件作用于被查询的表，从中选择满足条件的记录',
-          'HAVING 子句可以单独使用'
+          'WHERE条件与 HAVING 条件作用对象一致',
+          'HAVING作用于结果组',
+          'WHERE条件作用于被查询的表，从中选择满足条件的记录',
+          'HAVING子句可以单独使用'
         ],
         answer: 'A'
       },
       {
         type: '单选题',
-        text: '内连接的语句形式为:SELECT内容 FROM表1INNERJOIN 表2 ON〈连接条件〉，对连接条件说法不正确的是?',
+        text: '内连接的语句形式为:SELECT内容FROM表1INNERJOIN表2 ON〈连接条件〉，对连接条件说法不正确的是?',
         options: [
           '连接条件中可以使用表名或表名别名',
           '连接条件可以使用比较运算符，也可以使用逻辑运算符',
@@ -175,7 +175,7 @@
       },
       {
         type: '单选题',
-        text: '有学生表 student，结构如下学号(char (9),主键)、姓名(varchar (10),非空)、性别(char (2))、出生日期(date)、民族(varchar (20))。课程表 course，结构如下课程号(char (5),主键)、课程名称(varchar (30))、课程简介(text)、学分(int)。选课信息表 SC，结构如下学号(char (9),外键)、课程号(char (5),外键)、成绩(int,check(0,100))，査询至少选修一门课程的女同学姓名，并去除重复。下列 SQL 语句哪个是正确的?',
+        text: '有学生表student,结构如下学号(char (9),主键)、姓名(varchar (10),非空)、性别(char (2))、出生日期(date)、民族(varchar (20))。课程表 course，结构如下课程号(char (5),主键)、课程名称(varchar (30))、课程简介(text)、学分(int)。选课信息表 SC，结构如下学号(char (9),外键)、课程号(char (5),外键)、成绩(int,check(0,100))，査询至少选修一门课程的女同学姓名，并去除重复。下列 SQL 语句哪个是正确的?',
         options: [
           'select 姓名 from student OUT JOIN SC on student.学号=SC.学号 WHERE student.性别 ="女"',
           'select distinct 姓名 from student JOIN Sc on student.学号=SC.学号 WHERE student.性别 = "女"',
@@ -186,7 +186,7 @@
       },
       {
         type: '单选题',
-        text: '使用 SQL语句进行插入数据时，若希望查看原表中是否有该条数据时，应该使用的关键字是?',
+        text: '使用SQL语句进行插入数据时，若希望查看原表中是否有该条数据时，应该使用的关键字是?',
         options: ['EXISTS', 'DISTINCT', 'NOT EXISTS', 'COUNT'],
         answer: 'C'
       },
@@ -198,13 +198,13 @@
       },
       {
         type: '单选题',
-        text: '若 Nginx 安装到/usr/local/nginx目录下，那么网站默认根目录是()',
+        text: '若Nginx安装到/usr/local/nginx目录下，那么网站默认根目录是()',
         options: ['usr/local/nginx/html', 'var/www/html', 'usr/local/apache2/htdocs', 'etc/https'],
         answer: 'A'
       },
       {
         type: '单选题',
-        text: '若要 VSS 支持多用户检出，则需在Options->General 中勾选()选项。',
+        text: '若要VSS支持多用户检出，则需在Options->General中勾选()选项。',
         options: [
           'Allow multiple checkouts',
           'Use network name for automatic user log in',
@@ -215,13 +215,13 @@
       },
       {
         type: '单选题',
-        text: '使用 svn status 查看工作副本状态时，第一列返回 A 代表项目()',
+        text: '使用svn status查看工作副本状态时，第一列返A代表项目()',
         options: ['没有修改', '预定要添加的项目', '项目已经丢失', '项目不在版本控制之下'],
         answer: 'B'
       },
       {
         type: '单选题',
-        text: 'Git 中以下哪项配置可以使得特定项目使用该邮箱()',
+        text: 'Git中以下哪项配置可以使得特定项目使用该邮箱()',
         options: [
           'git config -global user.name',
           'git config -global user.email',
@@ -250,7 +250,7 @@
       },
       {
         type: '单选题',
-        text: 'SQL 语句查询时，可以使用哪一个关键字进行筛选?',
+        text: 'SQL语句查询时，可以使用哪一个关键字进行筛选?',
         options: ['WHERE', 'GROUP BY', 'ORDER BY', 'UNION'],
         answer: 'A'
       },
@@ -267,7 +267,7 @@
       },
       {
         type: '单选题',
-        text: 'MyBatis 框架的 resultMap 匹配关系映射，可以处理一对一关系、一对多关系和多对多关系，下列哪个标签用来处理一对一关系?',
+        text: 'MyBatis框架的resultMap匹配关系映射，可以处理一对一关系、一对多关系和多对多关系，下列哪个标签用来处理一对一关系?',
         options: ['association', 'collection', 'discriminator', 'scope'],
         answer: 'A'
       },
@@ -279,19 +279,19 @@
       },
       {
         type: "单选题",
-        text: '我们在使用 Tomcat 部署 war 包的时候，是将 war 包存放在哪个目录，然后开始自动解压部署',
+        text: '我们在使用Tomcat部署war包的时候，是将war包存放在哪个目录，然后开始自动解压部署',
         options: ['lib', 'conf', 'webapps', 'ROOT'],
         answer: 'C'
       },
       {
         type: "单选题",
-        text: 'Tomcat 的默认端口是',
+        text: 'Tomcat的默认端口是',
         options: ['80', '8080', '8080#8008'],
         answer: 'B'
       },
       {
         type: "单选题",
-        text: 'VSS 中若需锁定文件的某一版本，使其不再发生变化，可使用()操作',
+        text: 'VSS中若需锁定文件的某一版本，使其不再发生变化，可使用()操作',
         options: ['Share', 'Pin', 'Merge Branch', 'Rollback'],
         answer: 'B'
       },
@@ -303,7 +303,7 @@
       },
       {
         type: '多选题',
-        text: '有学生表 Stu，有 sno、sname、ssex、saddress 字段，查询学生所有信息的 SQL 语句是?',
+        text: '有学生表Stu，有sno、sname、ssex、saddress字段，查询学生所有信息的SQL语句是?',
         options: [
           'SELECT * FROM Stu',
           'SELECT sno, sname FROM Stu',
@@ -314,7 +314,7 @@
       },
       {
         type: '多选题',
-        text: '有学生表 Stu，Sno表示学号，Sname 表示姓名，Ssex表示性别，Sbirthday 表示出生日期，Sdept表示所在系，那么统计各系学生数的 SQL 语句是?',
+        text: '有学生表Stu，Sno表示学号，Sname表示姓名,Ssex表示性别，Sbirthday表示出生日期，Sdept表示所在系，那么统计各系学生数的SQL语句是?',
         options: [
           'SELECT Sdept,COUNT(*)AS 各系人数 FROM Stu GROUP BY Sdept',
           'SELECT Sno, Sdept, COUNT(*)FROM Stu GROUP BY Sdept',
@@ -325,7 +325,7 @@
       },
       {
         type: '多选题',
-        text: '有三个表，学生表 Stu(Sno,Sname,Ssex,Sbirthdav,sdept)，字段分别表示学号，姓名，性别，出生、日期，所在系，学号为主码:课程表 Course(no,Cname)字段分别表示课程号，课程名，课程号为主码，成绩表 SC(Sno,Cno,degree),字段分别表示学号，课程号，成绩，(Sno，Cno)共同为主码，分别参考 Stu，Course 表的主码。查询没有选修课程的学生信息',
+        text: '有三个表，学生表Stu(Sno,Sname,Ssex,Sbirthdav,sdept)，字段分别表示学号，姓名，性别，出生、日期，所在系，学号为主码:课程表Course(no,Cname)字段分别表示课程号，课程名，课程号为主码，成绩表 SC(Sno,Cno,degree),字段分别表示学号，课程号，成绩，(Sno，Cno)共同为主码，分别参考 Stu，Course 表的主码。查询没有选修课程的学生信息',
         options: [
           'SELECT * FROM Stu WHERE Sno != SELECT Sno FROM SC',
           'SELECT * FROM Stu WHERE Sno !=( SELECT Sno FROM SC)',
@@ -358,7 +358,7 @@
       },
       {
         type: '多选题',
-        text: '关于 Gradle 项目中 jcenter 和 maven 两个仓库的说法正确的是()',
+        text: '关于Gradle项目中jcenter和maven两个仓库的说法正确的是()',
         options: [
           'jcenter 是 JFrog 公司提供的仓库服务',
           'maven 是 Sonatype 公司提供的仓库服务',
@@ -391,13 +391,13 @@
       },
       {
         type: '多选题',
-        text: 'Nginx 负载均衡的方式有()',
+        text: 'Nginx负载均衡的方式有()',
         options: ['轮询', 'weight', 'ip hash', 'fair'],
         answer: ['A', 'B', 'C', 'D']
       },
       {
         type: '多选题',
-        text: 'VSS 支持定制安装，以下属于定制安装提供的选项是()',
+        text: 'VSS支持定制安装，以下属于定制安装提供的选项是()',
         options: [
           'Administrative Programs',
           'Client Programs',
@@ -423,7 +423,7 @@
       },
       {
         type: '判断题',
-        text: '触发器可以使用 SQL 语句创建或在 MySQL Workbench 中创建。',
+        text: '触发器可以使用SQL语句创建或在MySQL Workbench中创建。',
         answer: '对'
       },
       {
@@ -438,37 +438,37 @@
       },
       {
         type: '判断题',
-        text: '热部署是指在你修改项目的 JSP、JAVA 类或配置文件后，在不重启 WEB 服务器前提下能让修改生效。',
+        text: '热部署是指在你修改项目的JSP、JAVA类或配置文件后，在不重启WEB服务器前提下能让修改生效。',
         answer: '错'
       },
       {
         type: '判断题',
-        text: '任何用户不管有没有权限，都可以执行 Cancel search 操作。',
+        text: '任何用户不管有没有权限，都可以执行Cancel search操作。',
         answer: '对'
       },
       {
         type: '判断题',
-        text: 'SVN 的客户端会根据需要自动编码 URL，类似 web 浏览器。',
+        text: 'SVN的客户端会根据需要自动编码URL，类似web浏览器。',
         answer: '对'
       },
       {
         type: '判断题',
-        text: '使用 git tag 命令查看所有标签时，标签按时间顺序倒叙排列。',
+        text: '使用git tag命令查看所有标签时，标签按时间顺序倒叙排列。',
         answer: '错'
       },
       {
         type: '判断题',
-        text: 'JUnit 允许只运行失败的用例。',
+        text: 'JUnit允许只运行失败的用例。',
         answer: '错'
       },
       {
         type: '判断题',
-        text: 'Hamcrest 匹配器中 allOf 用于检查是否与所有包含的匹配器匹配。',
+        text: 'Hamcrest 匹配器中allOf用于检查是否与所有包含的匹配器匹配。',
         answer: '对'
       },
       {
         type: '判断题',
-        text: 'SELECT 语句的后面接列名时，可以对列名进行重命名，必须使用关键字 AS。',
+        text: 'SELECT 语句的后面接列名时，可以对列名进行重命名，必须使用关键字AS。',
         answer: '错'
       },
       {
