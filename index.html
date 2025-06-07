@@ -48,7 +48,7 @@
     .content {
       margin-top: 60px;
       padding: 10px;
-      padding-bottom: 60px;
+      padding-bottom: 40px;
       /* 防止内容被底部遮挡 */
     }
 
@@ -175,7 +175,7 @@
       },
       {
         type: '单选题',
-        text: '下列 SQL 语句哪个是正确的(查询至少选修一门课程的女同学姓名，并去除重复)?',
+        text: '有学生表 student，结构如下学号(char (9),主键)、姓名(varchar (10),非空)、性别(char (2))、出生日期(date)、民族(varchar (20))。课程表 course，结构如下课程号(char (5),主键)、课程名称(varchar (30))、课程简介(text)、学分(int)。选课信息表 SC，结构如下学号(char (9),外键)、课程号(char (5),外键)、成绩(int,check(0,100))，査询至少选修一门课程的女同学姓名，并去除重复。下列 SQL 语句哪个是正确的?',
         options: [
           'select 姓名 from student OUT JOIN SC on student.学号=SC.学号 WHERE student.性别 ="女"',
           'select distinct 姓名 from student JOIN Sc on student.学号=SC.学号 WHERE student.性别 = "女"',
@@ -224,7 +224,7 @@
         text: 'Git 中以下哪项配置可以使得特定项目使用该邮箱()',
         options: [
           'git config -global user.name',
-          'git config--global user.email',
+          'git config -global user.email',
           'git config user.name',
           'git config user.email'
         ],
@@ -285,7 +285,7 @@
       },
       {
         type: "单选题",
-        text: '.Tomcat 的默认端口是',
+        text: 'Tomcat 的默认端口是',
         options: ['80', '8080', '8080#8008'],
         answer: 'B'
       },
@@ -314,7 +314,7 @@
       },
       {
         type: '多选题',
-        text: '统计各系学生数的 SQL 语句是?',
+        text: '有学生表 Stu，Sno表示学号，Sname 表示姓名，Ssex表示性别，Sbirthday 表示出生日期，Sdept表示所在系，那么统计各系学生数的 SQL 语句是?',
         options: [
           'SELECT Sdept,COUNT(*)AS 各系人数 FROM Stu GROUP BY Sdept',
           'SELECT Sno, Sdept, COUNT(*)FROM Stu GROUP BY Sdept',
@@ -325,7 +325,7 @@
       },
       {
         type: '多选题',
-        text: '查询没有选修课程的学生信息。',
+        text: '有三个表，学生表 Stu(Sno,Sname,Ssex,Sbirthdav,sdept)，字段分别表示学号，姓名，性别，出生、日期，所在系，学号为主码:课程表 Course(no,Cname)字段分别表示课程号，课程名，课程号为主码，成绩表 SC(Sno,Cno,degree),字段分别表示学号，课程号，成绩，(Sno，Cno)共同为主码，分别参考 Stu，Course 表的主码。查询没有选修课程的学生信息',
         options: [
           'SELECT * FROM Stu WHERE Sno != SELECT Sno FROM SC',
           'SELECT * FROM Stu WHERE Sno !=( SELECT Sno FROM SC)',
@@ -347,7 +347,7 @@
       },
       {
         type: '多选题',
-        text: '关于给定触发器定义的说法正确的是?',
+        text: 'DELIMITER S$ \nCREATE TRIGGER before products update\nBEFORE UPDATE ON products\nFOR EACH ROW\nBEGIN\nINSERT INTO price logs(product code, price )\nVALUES(old.productCode, old.msrp);\nEND $$\nDELIMITER :\n有触发器定义如上所述，下面说法正确的是',
         options: [
           '该触发器是在插入表 products 之前触发的',
           '该触发器将 old 表的产品代码和价格插入到表 price logs 中',
