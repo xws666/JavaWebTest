@@ -85,10 +85,88 @@
       color: #555;
       font-family: "Segoe UI", sans-serif;
     }
+
+    /* 弹窗样式 */
+    .popup-overlay {
+      display: flex;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 70vw;
+      /* 宽度占视口的70% */
+      max-width: 600px;
+      /* 限制最大宽度，避免超宽 */
+      text-align: left;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      font-family: Arial, sans-serif;
+      box-sizing: border-box;
+    }
+
+
+    .popup-title {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .popup-text {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .popup-buttons {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    button {
+      padding: 6px 12px;
+      font-size: 14px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
   </style>
 </head>
 
 <body>
+  <!-- 弹窗遮罩层和内容 -->
+  <div id="popupOverlay" class="popup-overlay">
+    <div class="popup-content">
+      <div class="popup-title">注意事项：</div>
+      <div class="popup-text">
+        <p>1. 本站试题仅供学习使用，严禁用于任何商业用途</p>
+        <p>2. 请勿将本站内容用于考试作弊或其他不当行为</p>
+        <p>3. 本站不对任何因使用本站内容而导致的后果负责</p>
+        <p>4. 本站将在6月16日停止维护并拒绝访问</p>
+      </div>
+      <div class="popup-title">更新说明：</div>
+      <div class="popup-text">
+        <p>1. 取消了题目中英文与汉字连接处的空格，搜索更准确</p>
+        <p>2. 修正了部分题目</p>
+      </div>
+      <label style="font-size: 13px;">
+        <input type="checkbox" id="noShowCheckbox"> 已知晓并不再提示
+      </label>
+      <div class="popup-buttons" style="text-align: right; margin-top: 10px;">
+        <button onclick="closePopup()">确定</button>
+      </div>
+    </div>
+  </div>
+
   <div class="search-box">
     <div class="search-container">
       <input type="text" id="searchInput" placeholder="输入关键字搜索...">
@@ -483,6 +561,7 @@
       }
     ];
 
+
     function displayQuestions(filtered = questions) {
       const container = document.getElementById('questionContainer');
       container.innerHTML = '';
@@ -542,12 +621,40 @@
       displayQuestions(filtered);
     }
 
-    // 初始加载
-    displayQuestions();
-
     // 添加输入框的input事件监听
     document.getElementById('searchInput').addEventListener('input', searchQuestions);
+
+    function closePopup() {
+      const checkbox = document.getElementById('noShowCheckbox');
+      const popup = document.getElementById('popupOverlay');
+      if (checkbox.checked) {
+        const expiration = Date.now() + 3 * 24 * 60 * 60 * 1000; // 3天有效期
+        localStorage.setItem('noShowPopupUntil', expiration.toString());
+        console.log("设置不再提示，保存时间戳：", expiration);
+      }
+      popup.style.display = 'none';
+    }
+
+    function shouldShowPopup() {
+      const saved = localStorage.getItem('noShowPopupUntil');
+      const now = Date.now();
+      console.log("当前时间戳：", now);
+      console.log("保存的时间戳：", saved);
+      return !saved || parseInt(saved) < now;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      displayQuestions();
+
+      // 判断是否弹出
+      if (shouldShowPopup()) {
+        document.getElementById('popupOverlay').style.display = 'flex';
+      } else {
+        document.getElementById('popupOverlay').style.display = 'none';
+      }
+    });
   </script>
+
 </body>
 
 </html>
