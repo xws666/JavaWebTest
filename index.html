@@ -140,6 +140,42 @@
       cursor: pointer;
       width: 16vw;
     }
+
+    /* 滚动横幅样式 */
+    .marquee-container {
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+    }
+
+    .marquee-text {
+      display: inline-block;
+      padding-left: 100%;
+      /* 初始位置在右边外 */
+      animation: marquee 10s linear infinite;
+      font-size: 15px;
+      color: green;
+      /* 滚动文字颜色可自定义 */
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0%);
+      }
+
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background-color: #ccc;
+      /* 线条颜色 */
+      margin: 4px 0;
+    }
   </style>
 </head>
 
@@ -150,7 +186,7 @@
       <div class="popup-title">6月11日公告：</div>
       <div class="popup-text">
         <p>新增了清空输入框按钮</p>
-        <p>请使用浏览器打开，微信限制过多</p>
+        <p>如遇打开加载失败的情况请多刷新</p>
         <p>本站将于6月16日停止维护，届时将禁止访问</p>
       </div>
       <div class="popup-title">使用须知：</div>
@@ -159,10 +195,10 @@
         <p>2.请勿将本站内容用于考试作弊或其他不当行为</p>
         <p>3.本站不对任何因使用本站内容而导致的后果负责</p>
         <p>4.本站不收集用户个人信息，请勿提供任何个人信息</p>
-        <p>5.使用即代表同意以上条款，感谢理解与支持</p>
+        <p>5.感谢理解与支持</p>
       </div>
       <label style="font-size: 13px;">
-        <input type="checkbox" id="noShowCheckbox"> 已仔细阅读遵守并不再提示
+        <input type="checkbox" id="noShowCheckbox"> 已仔细阅读并不再提示
       </label>
       <div class="popup-buttons" style="text-align: right; margin-top: 10px;">
         <button onclick="closePopup()">确定</button>
@@ -183,6 +219,10 @@
 
   <!-- 固定底部文字 -->
   <div class="footer">
+    <div>
+      <marquee behavior="scroll" direction="left" scrollamount="6">欢迎使用本网站！请勿将本站内容用于考试作弊或其他不当行为；本站不对任何因使用本站内容而导致的后果负责；如有需要定制或开发网页、网站、管理系统请联系微信：Qiwen375</marquee>
+    </div>
+    <div class="divider"></div> <!-- 分割线 -->
     <div>
       ©2025 小稳神 | 备号未申请 | 仅供学习使用
     </div>
