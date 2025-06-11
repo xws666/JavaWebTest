@@ -147,12 +147,25 @@
   <!-- 弹窗遮罩层和内容 -->
   <div id="popupOverlay" class="popup-overlay">
     <div class="popup-content">
-      <div class="popup-title">网站维护通知：</div>
+      <div class="popup-title">6月11日公告：</div>
       <div class="popup-text">
-        <p>您好！目前我们的网站更新时出现了bug导致页面显示异常。对此深感抱歉，并正在全力修复中。</p>
-<p>为了不影响您的正常使用，预计将在2025年6月11日22:00前完成问题修复并恢复正常访问。由此给您带来的不便深表歉意，感谢您的理解与支持！</p>
-<p>如有任何疑问，欢迎联系通过邮件反馈问题。</p>
-<p>再次感谢您的耐心等待！</p>
+        <p>新增了清空输入框按钮</p>
+        <p>如遇打开加载失败的情况请多刷新</p>
+        <p>本站将于6月16日停止维护，届时将禁止访问</p>
+      </div>
+      <div class="popup-title">使用须知：</div>
+      <div class="popup-text">
+        <p>1.本站试题仅供学习使用，严禁用于任何商业用途</p>
+        <p>2.请勿将本站内容用于考试作弊或其他不当行为</p>
+        <p>3.本站不对任何因使用本站内容而导致的后果负责</p>
+        <p>4.本站不收集用户个人信息，请勿提供任何个人信息</p>
+        <p>5.使用即代表同意以上条款，感谢理解与支持</p>
+      </div>
+      <label style="font-size: 13px;">
+        <input type="checkbox" id="noShowCheckbox"> 已仔细阅读遵守并不再提示
+      </label>
+      <div class="popup-buttons" style="text-align: right; margin-top: 10px;">
+        <button onclick="closePopup()">确定</button>
       </div>
     </div>
   </div>
@@ -174,7 +187,7 @@
       ©2025 小稳神 | 备号未申请 | 仅供学习使用
     </div>
     <div>
-      问题或建议反馈：3253952854@qq.com
+      联系邮箱：3253952854@qq.com
     </div>
   </div>
 
@@ -186,7 +199,7 @@
         options: ['BeforeAdvice', 'Pointcut', 'AfterAdvice', 'MethodInterceotor'],
         answer: 'B'
       },
-      {^
+      {
         type: '单选题',
         text: '在SpringMVc中，以下描述错误的是',
         options: [
