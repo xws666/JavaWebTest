@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小稳神-JavaWeb网页版试题</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      padding: 0px 10px;
+      margin: 3px 10px;
+    }
+
+    .search-box {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      padding: 6px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+    }
+
+    .search-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 10px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .content {
+      margin-top: 60px;
+      padding: 10px;
+      padding-bottom: 40px;
+      /* 防止内容被底部遮挡 */
+    }
+
+    .question-card {
+      background: white;
+      border-radius: 8px;
+      padding: 7px 20px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .question-type {
+      font-weight: bold;
+      margin-bottom: 2px;
+      color: #444;
+    }
+
+    .answer {
+      margin-top: 0px;
+      color: green;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2px;
+      background: #fff;
+      text-align: center;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+      font-size: 15px;
+      color: #555;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    /* 弹窗样式 */
+    .popup-overlay {
+      display: flex;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 80vw;
+      /* 宽度占视口的70% */
+      max-width: 600px;
+      /* 限制最大宽度，避免超宽 */
+      text-align: left;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      font-family: Arial, sans-serif;
+      box-sizing: border-box;
+    }
+
+
+    .popup-title {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .popup-text {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .popup-buttons {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    button {
+      padding: 6px 12px;
+      font-size: 14px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 16vw;
+    }
+
+    /* 滚动横幅样式 */
+    .marquee-container {
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+    }
+
+    .marquee-text {
+      display: inline-block;
+      padding-left: 100%;
+      /* 初始位置在右边外 */
+      animation: marquee 10s linear infinite;
+      font-size: 18px;
+      color: green;
+      /* 滚动文字颜色可自定义 */
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0%);
+      }
+
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background-color: #ccc;
+      /* 线条颜色 */
+      margin: 0px 0px 2px 0px;
+    }
+
+    .answer1{
+      font-weight: bold;
+      color: rgb(24, 142, 0);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 弹窗遮罩层和内容 -->
+  <div id="popupOverlay" class="popup-overlay">
+    <div class="popup-content">
+      <div class="popup-title">停止维护公告：</div>
+      <div class="popup-text">
+        <p>本网站于2025年6月20日12：00正式停止维护结束访问，再次感谢您的使用与支持！</p>
+      </div>
+      <div class="popup-text">
+        <p>如需定制或开发网页、大型网站、管理系统以及微信小程序等联系微信：<span class="answer1">Qiwen375</span></p>
+      </div>
+      <img style="width:100%;" src="./flow_chart.jpg" alt="">
+      <div class="popup-text">
+        <p>您有需求我有能力，欢迎联系！</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function displayQuestions(filtered = questions) {
+      const container = document.getElementById('questionContainer');
+      container.innerHTML = '';
+      filtered.forEach((q, index) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+
+        const type = document.createElement('div');
+        type.className = 'question-type';
+        type.textContent = `${index + 1}. ${q.type}`;
+
+        const text = document.createElement('div');
+        text.textContent = q.text;
+
+        card.appendChild(type);
+        card.appendChild(text);
+
+        if (q.options) {
+          const options = document.createElement('ul');
+          q.options.forEach((opt, i) => {
+            const li = document.createElement('li');
+            li.textContent = `${String.fromCharCode(65 + i)}: ${opt}`;
+            options.appendChild(li);
+          });
+          card.appendChild(options);
+        }
+
+        const answer = document.createElement('div');
+        answer.className = 'answer';
+        const answerText = Array.isArray(q.answer) ? q.answer.join('、') : q.answer;
+        answer.textContent = `正确答案：${answerText}`;
+
+        card.appendChild(answer);
+        container.appendChild(card);
+      });
+    }
+
+    function searchQuestions() {
+      const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
+      if (!keyword) {
+        displayQuestions();
+        return;
+      }
+
+      const filtered = questions.filter(q => {
+        if (q.text.toLowerCase().includes(keyword)) {
+          return true;
+        }
+
+        if (q.options) {
+          return q.options.some(opt => opt.toLowerCase().includes(keyword));
+        }
+
+        return false;
+      });
+
+      displayQuestions(filtered);
+    }
+
+    // 添加输入框的input事件监听
+    document.getElementById('searchInput').addEventListener('input', searchQuestions);
+
+    function closePopup() {
+      const checkbox = document.getElementById('noShowCheckbox');
+      const popup = document.getElementById('popupOverlay');
+      if (checkbox.checked) {
+        const expiration = Date.now() + 3 * 24 * 60 * 60 * 1000; // 3天有效期
+        localStorage.setItem('noShowPopupUntil_v2', expiration.toString());
+        console.log("设置不再提示，保存时间戳：", expiration);
+      }
+      popup.style.display = 'none';
+    }
+
+    function shouldShowPopup() {
+      const saved = localStorage.getItem('noShowPopupUntil_v2');
+      const now = Date.now();
+      console.log("当前时间戳：", now);
+      console.log("保存的时间戳：", saved);
+      return !saved || parseInt(saved) < now;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      displayQuestions();
+
+      // 判断是否弹出
+      if (shouldShowPopup()) {
+        document.getElementById('popupOverlay').style.display = 'flex';
+      } else {
+        document.getElementById('popupOverlay').style.display = 'none';
+      }
+    });
+
+    // 清除按钮点击事件
+    document.getElementById('clearButton').addEventListener('click', function () {
+      const searchInput = document.getElementById('searchInput');
+      searchInput.value = '';
+      displayQuestions(); // 恢复显示全部题目
+    });
+  </script>
+
+</body>
+
+</html>
